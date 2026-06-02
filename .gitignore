@@ -20,6 +20,8 @@ data/processed/
 models/*.pkl
 models/*.joblib
 !models/.gitkeep
+data/raw/
+data/processed/
 
 # Secrets
 .env

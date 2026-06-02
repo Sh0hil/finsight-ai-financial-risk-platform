@@ -619,10 +619,45 @@ Suggested screenshots:
 Example Markdown:
 
 ```markdown
+---
+
+## Project Screenshots
+
+### Streamlit Dashboard
+
 ![Dashboard](reports/screenshots/dashboard.png)
-![Batch Prediction](reports/screenshots/batch_prediction.png)
-![Batch Results](reports/screenshots/batch_prediction_results.png)
+
+### Credit Risk Prediction
+
+![Credit Risk Prediction](reports/screenshots/credit_risk.png)
+
+### Fraud Detection
+
+![Fraud Detection](reports/screenshots/fraud_detection.png)
+
+### Customer Segmentation
+
+![Customer Segmentation](reports/screenshots/customer_segmentation.png)
+
+### Batch Prediction - Uploaded Data Preview
+
+![Batch Prediction Preview](reports/screenshots/batch_prediction_preview.png)
+
+### Batch Prediction - Final Results
+
+![Batch Prediction Results](reports/screenshots/batch_prediction_results.png)
+
+### FastAPI Swagger Documentation
+
 ![FastAPI Docs](reports/screenshots/fastapi_docs.png)
+
+### Docker Containers Running
+
+![Docker Containers](reports/screenshots/docker_containers.png)
+
+### AWS EC2 Live Deployment
+
+![AWS EC2 Deployment](reports/screenshots/aws_ec2_deployment.png)
 ```
 
 ---
