@@ -9,10 +9,6 @@ credit_model = load_model(CREDIT_MODEL_PATH)
 
 
 def predict_credit_risk(input_data: dict):
-    """
-    Predict credit default risk from applicant input data.
-    """
-
     input_df = pd.DataFrame([input_data])
 
     prediction = credit_model.predict(input_df)[0]

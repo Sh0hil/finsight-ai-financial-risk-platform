@@ -15,11 +15,6 @@ segment_pca = load_model(SEGMENT_PCA_PATH)
 
 
 def get_segment_name(segment_id: int):
-    """
-    Convert cluster number into business segment name.
-    Adjust names after checking your actual segment profile.
-    """
-
     segment_mapping = {
         0: "Normal Low Activity Customers",
         1: "High Value Active Customers",
@@ -32,19 +27,13 @@ def get_segment_name(segment_id: int):
 
 
 def predict_customer_segment(input_data: dict):
-    """
-    Predict customer segment from customer-level features.
-    """
-
     input_df = pd.DataFrame([input_data])
 
     scaled_data = segment_scaler.transform(input_df)
-
     segment_id = segment_model.predict(scaled_data)[0]
     segment_name = get_segment_name(int(segment_id))
 
     pca_values = segment_pca.transform(scaled_data)
-
     segment_recommendation = get_segment_recommendation(segment_name)
 
     return {

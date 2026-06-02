@@ -11,14 +11,14 @@ def get_credit_recommendation(default_probability):
     risk_level = get_credit_risk_level(default_probability)
 
     if risk_level == "High Risk":
-        recommendation = "Reject loan application or request collateral/guarantor."
         decision = "Reject / Manual Review Required"
+        recommendation = "Reject loan application or request collateral/guarantor."
     elif risk_level == "Medium Risk":
-        recommendation = "Approve only after manual verification, income proof check, and possible higher interest rate."
         decision = "Manual Review"
+        recommendation = "Approve only after manual verification, income proof check, and possible higher interest rate."
     else:
-        recommendation = "Approve loan application with standard terms."
         decision = "Approve"
+        recommendation = "Approve loan application with standard terms."
 
     return {
         "default_probability": round(float(default_probability), 4),
@@ -43,17 +43,17 @@ def get_fraud_recommendation(fraud_probability):
     risk_level = get_fraud_risk_level(fraud_probability)
 
     if risk_level == "Critical Risk":
-        action = "Block transaction immediately and freeze account temporarily."
         decision = "Block Transaction"
+        action = "Block transaction immediately and freeze account temporarily."
     elif risk_level == "High Risk":
-        action = "Hold transaction and trigger identity verification or OTP."
         decision = "Manual Verification"
+        action = "Hold transaction and trigger identity verification or OTP."
     elif risk_level == "Medium Risk":
-        action = "Allow transaction after additional authentication."
         decision = "Step-up Authentication"
+        action = "Allow transaction after additional authentication."
     else:
-        action = "Allow transaction normally."
         decision = "Allow Transaction"
+        action = "Allow transaction normally."
 
     return {
         "fraud_probability": round(float(fraud_probability), 4),
@@ -71,21 +71,25 @@ def get_segment_recommendation(segment_name):
             "segment_action": "Offer premium products, credit card upgrade, or loyalty benefits.",
             "business_priority": "High"
         }
+
     elif "suspicious" in segment_name or "high risk" in segment_name:
         return {
             "segment_action": "Monitor account closely and apply stricter transaction checks.",
             "business_priority": "Critical"
         }
+
     elif "balance draining" in segment_name:
         return {
             "segment_action": "Trigger account safety alert and review abnormal fund movement.",
             "business_priority": "High"
         }
+
     elif "low activity" in segment_name:
         return {
             "segment_action": "Send engagement campaign or personalized financial offers.",
             "business_priority": "Medium"
         }
+
     else:
         return {
             "segment_action": "Continue normal customer monitoring.",

@@ -43,9 +43,7 @@ def prepare_credit_batch(df: pd.DataFrame) -> pd.DataFrame:
     if "DAYS_EMPLOYED_RATIO" not in df.columns:
         df["DAYS_EMPLOYED_RATIO"] = df["DAYS_EMPLOYED"] / df["DAYS_BIRTH"]
 
-    df = clean_dataframe(df)
-
-    return df
+    return clean_dataframe(df)
 
 
 def prepare_fraud_batch(df: pd.DataFrame) -> pd.DataFrame:
@@ -69,9 +67,7 @@ def prepare_fraud_batch(df: pd.DataFrame) -> pd.DataFrame:
     if "is_balance_drained" not in df.columns:
         df["is_balance_drained"] = (df["newbalanceOrig"] == 0).astype(int)
 
-    df = clean_dataframe(df)
-
-    return df
+    return clean_dataframe(df)
 
 
 def batch_predict_credit(df: pd.DataFrame) -> pd.DataFrame:
@@ -92,15 +88,7 @@ def batch_predict_credit(df: pd.DataFrame) -> pd.DataFrame:
 
     results_df = pd.DataFrame(results)
 
-    final_df = pd.concat(
-        [input_df.reset_index(drop=True), results_df],
-        axis=1
-    )
-
-    final_df = final_df.replace([np.inf, -np.inf], np.nan)
-    final_df = final_df.where(pd.notnull(final_df), None)
-
-    return final_df
+    return pd.concat([input_df.reset_index(drop=True), results_df], axis=1)
 
 
 def batch_predict_fraud(df: pd.DataFrame) -> pd.DataFrame:
@@ -121,12 +109,4 @@ def batch_predict_fraud(df: pd.DataFrame) -> pd.DataFrame:
 
     results_df = pd.DataFrame(results)
 
-    final_df = pd.concat(
-        [input_df.reset_index(drop=True), results_df],
-        axis=1
-    )
-
-    final_df = final_df.replace([np.inf, -np.inf], np.nan)
-    final_df = final_df.where(pd.notnull(final_df), None)
-
-    return final_df
+    return pd.concat([input_df.reset_index(drop=True), results_df], axis=1)

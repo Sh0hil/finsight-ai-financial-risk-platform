@@ -55,22 +55,19 @@ def health_check():
 @app.post("/predict-credit-risk")
 def credit_risk_prediction(input_data: CreditRiskInput):
     data = input_data.model_dump()
-    result = predict_credit_risk(data)
-    return result
+    return predict_credit_risk(data)
 
 
 @app.post("/predict-fraud")
 def fraud_prediction(input_data: FraudInput):
     data = input_data.model_dump()
-    result = predict_fraud(data)
-    return result
+    return predict_fraud(data)
 
 
 @app.post("/predict-segment")
 def segment_prediction(input_data: SegmentInput):
     data = input_data.model_dump()
-    result = predict_customer_segment(data)
-    return result
+    return predict_customer_segment(data)
 
 
 @app.post("/batch-predict-credit-risk")
@@ -78,19 +75,12 @@ async def batch_credit_prediction(
     file: UploadFile = File(...),
     max_rows: int = 100
 ):
-    """
-    Batch credit risk prediction using uploaded CSV.
-    Upload credit CSV and choose max_rows to limit processing.
-    """
-
     try:
         contents = await file.read()
         decoded = contents.decode("utf-8")
 
         df = pd.read_csv(StringIO(decoded))
-
-        if max_rows is not None:
-            df = df.head(max_rows)
+        df = df.head(max_rows)
 
         result_df = batch_predict_credit(df)
 
@@ -117,19 +107,12 @@ async def batch_fraud_prediction(
     file: UploadFile = File(...),
     max_rows: int = 100
 ):
-    """
-    Batch fraud prediction using uploaded CSV.
-    Upload PaySim/fraud CSV and choose max_rows to limit processing.
-    """
-
     try:
         contents = await file.read()
         decoded = contents.decode("utf-8")
 
         df = pd.read_csv(StringIO(decoded))
-
-        if max_rows is not None:
-            df = df.head(max_rows)
+        df = df.head(max_rows)
 
         result_df = batch_predict_fraud(df)
 

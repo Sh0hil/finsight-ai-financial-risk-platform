@@ -1,45 +1,31 @@
 # Python
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.Python
+.ipynb_checkpoints/
 
-# Environments
+# Environment
 venv/
 env/
 .venv/
-myenv/
 
-# Jupyter
-.ipynb_checkpoints/
-
-# VS Code
-.vscode/
-
-# Logs
-*.log
-
-# Large raw datasets
+# Large datasets
 data/raw/
-data/processed/*.csv
+data/processed/
 
-data/raw/
-large CSV files
-venv/
-
-# Keep sample data if you have it
+# Keep sample CSVs
 !data/sample_credit_input.csv
 !data/sample_fraud_input.csv
 
-# OS files
-.DS_Store
-Thumbs.db
+# Model files too large for GitHub
+models/*.pkl
+models/*.joblib
+!models/.gitkeep
 
 # Secrets
 .env
 *.pem
 
-# Model files - too large for GitHub
-models/*.pkl
-models/*.joblib
+# OS / IDE
+.vscode/
+.DS_Store
+Thumbs.db

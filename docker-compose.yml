@@ -1,18 +1,19 @@
-version: "3.9"
-
 services:
   api:
     build:
       context: .
       dockerfile: Dockerfile.api
+    image: sh0hil/finsight-ai-api:latest
     container_name: finsight-api
     ports:
       - "8000:8000"
+    restart: always
 
   streamlit:
     build:
       context: .
       dockerfile: Dockerfile.streamlit
+    image: sh0hil/finsight-ai-streamlit:latest
     container_name: finsight-dashboard
     ports:
       - "8501:8501"
@@ -20,3 +21,4 @@ services:
       - API_URL=http://api:8000
     depends_on:
       - api
+    restart: always

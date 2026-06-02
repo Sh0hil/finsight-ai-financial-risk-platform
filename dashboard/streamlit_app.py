@@ -1,14 +1,16 @@
+import os
 import streamlit as st
 import requests
 import pandas as pd
 import numpy as np
-import os
 
 
 API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 
-
+# -----------------------------
+# Helper functions
+# -----------------------------
 def convert_df_to_csv(df: pd.DataFrame) -> bytes:
     return df.to_csv(index=False).encode("utf-8")
 
@@ -160,9 +162,9 @@ def show_api_error(response):
         st.error("API request failed, and error details could not be displayed.")
 
 
-
+# -----------------------------
 # Streamlit UI
-
+# -----------------------------
 st.set_page_config(
     page_title="FinSight AI",
     page_icon="💳",

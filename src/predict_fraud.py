@@ -9,10 +9,6 @@ fraud_model = load_model(FRAUD_MODEL_PATH)
 
 
 def create_fraud_features(input_data: dict):
-    """
-    Create fraud features from raw transaction input.
-    """
-
     data = input_data.copy()
 
     data["balance_diff_orig"] = data["oldbalanceOrg"] - data["newbalanceOrig"]
@@ -24,12 +20,7 @@ def create_fraud_features(input_data: dict):
 
 
 def predict_fraud(input_data: dict):
-    """
-    Predict whether a transaction is fraudulent.
-    """
-
     processed_data = create_fraud_features(input_data)
-
     input_df = pd.DataFrame([processed_data])
 
     prediction = fraud_model.predict(input_df)[0]
