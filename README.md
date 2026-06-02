@@ -24,17 +24,10 @@ FinSight AI solves this problem by using machine learning to automate financial 
 
 The project contains four major functional areas:
 
-1. **Credit Risk Prediction**  
-   Predicts whether a loan applicant may default.
-
-2. **Fraud Detection**  
-   Detects potentially fraudulent transactions.
-
-3. **Customer Segmentation**  
-   Groups customers based on transaction behavior.
-
-4. **Batch Prediction**  
-   Allows users to upload CSV files and generate predictions for multiple records together.
+1. **Credit Risk Prediction** - predicts whether a loan applicant may default.
+2. **Fraud Detection** - detects potentially fraudulent transactions.
+3. **Customer Segmentation** - groups customers based on transaction behavior.
+4. **Batch Prediction** - allows users to upload CSV files and generate predictions for multiple records together.
 
 ---
 
@@ -78,23 +71,7 @@ The project contains four major functional areas:
 **Dataset:** Home Credit Default Risk Dataset  
 **Objective:** Predict whether a loan applicant is likely to default.
 
-Important features include:
-
-- Contract type
-- Gender
-- Car ownership
-- Realty ownership
-- Income amount
-- Credit amount
-- Annuity amount
-- Goods price
-- Income type
-- Education type
-- Family status
-- Housing type
-- Occupation type
-- Employment days
-- Family members
+Important features include contract type, gender, car ownership, realty ownership, income amount, credit amount, annuity amount, goods price, income type, education type, family status, housing type, occupation type, employment days, and family members.
 
 Engineered features:
 
@@ -105,22 +82,12 @@ CREDIT_TERM
 DAYS_EMPLOYED_RATIO
 ```
 
----
-
 ### 2. Fraud Detection Module
 
 **Dataset:** PaySim Fraud Detection Dataset  
 **Objective:** Detect fraudulent financial transactions.
 
-Important features include:
-
-- Transaction step
-- Transaction type
-- Transaction amount
-- Old origin balance
-- New origin balance
-- Old destination balance
-- New destination balance
+Important features include transaction step, transaction type, amount, old origin balance, new origin balance, old destination balance, and new destination balance.
 
 Engineered features:
 
@@ -131,22 +98,11 @@ amount_balance_ratio
 is_balance_drained
 ```
 
----
-
 ### 3. Customer Segmentation Module
 
 **Objective:** Segment customers based on transaction behavior.
 
-Features include:
-
-- Total transactions
-- Total transaction amount
-- Average transaction amount
-- Maximum transaction amount
-- Minimum transaction amount
-- Fraud ratio
-- Balance behavior
-- Transaction type counts
+Features include total transactions, total amount, average amount, maximum amount, minimum amount, fraud ratio, balance behavior, and transaction type counts.
 
 ---
 
@@ -243,13 +199,7 @@ Downloadable CSV
 
 Batch prediction makes the project more realistic for financial companies because banks, NBFCs, fintech companies, and fraud monitoring teams usually process thousands of records together instead of one record at a time.
 
-This feature makes the project suitable for real business use cases such as:
-
-- Bulk loan application screening
-- Transaction fraud monitoring
-- Risk report generation
-- Internal financial analytics
-- Automated decision-support systems
+This feature makes the project suitable for bulk loan application screening, transaction fraud monitoring, risk report generation, internal financial analytics, and automated decision-support systems.
 
 ---
 
@@ -265,58 +215,33 @@ Customer Segmentation
 Batch Prediction
 ```
 
-### 1. Project Overview
+### Project Overview
 
 Provides a high-level summary of the project, modules, and system purpose.
 
-### 2. Credit Risk Prediction
+### Credit Risk Prediction
 
 Allows single applicant-level prediction using credit risk features.
 
-Output includes:
+Output includes prediction label, default probability, risk level, decision, and recommendation.
 
-- Prediction label
-- Default probability
-- Risk level
-- Decision
-- Recommendation
-
-### 3. Fraud Detection
+### Fraud Detection
 
 Allows single transaction-level fraud prediction.
 
-Output includes:
+Output includes prediction label, fraud probability, risk level, decision, and recommended action.
 
-- Prediction label
-- Fraud probability
-- Risk level
-- Decision
-- Recommended action
-
-### 4. Customer Segmentation
+### Customer Segmentation
 
 Segments customers based on financial and transaction behavior.
 
-Output includes:
+Output includes segment ID, segment name, PCA values, business priority, and recommended segment action.
 
-- Segment ID
-- Segment name
-- PCA values
-- Business priority
-- Recommended segment action
-
-### 5. Batch Prediction
+### Batch Prediction
 
 Allows CSV upload for multiple-record prediction.
 
-Output includes:
-
-- Uploaded data preview
-- Processed prediction results
-- Risk probability
-- Decision
-- Recommendation
-- Downloadable CSV result
+Output includes uploaded data preview, processed prediction results, risk probability, decision, recommendation, and downloadable CSV result.
 
 ---
 
@@ -413,13 +338,49 @@ The project does not only return raw model predictions. It also converts model o
 
 ### Customer Segmentation Actions
 
-The segmentation module recommends actions such as:
+The segmentation module recommends actions such as premium offers, suspicious customer monitoring, engagement campaigns, account safety review, and normal monitoring.
 
-- Offer premium products
-- Monitor suspicious customers
-- Send engagement campaigns
-- Trigger account safety review
-- Continue normal monitoring
+---
+
+## Project Screenshots
+
+> Make sure the image file names below exactly match the files inside `reports/screenshots/`.
+
+### Streamlit Dashboard
+
+![Dashboard](reports/screenshots/dashboard.png)
+
+### Credit Risk Prediction
+
+![Credit Risk Prediction](reports/screenshots/credit_risk.png)
+
+### Fraud Detection
+
+![Fraud Detection](reports/screenshots/fraud_detection.png)
+
+### Customer Segmentation
+
+![Customer Segmentation](reports/screenshots/customer_segmentation.png)
+
+### Batch Prediction - Uploaded Data Preview
+
+![Batch Prediction Preview](reports/screenshots/batch_prediction_preview.png)
+
+### Batch Prediction - Final Results
+
+![Batch Prediction Results](reports/screenshots/batch_prediction_results.png)
+
+### FastAPI Swagger Documentation
+
+![FastAPI Docs](reports/screenshots/fastapi_docs.png)
+
+### Docker Containers Running
+
+![Docker Containers](reports/screenshots/docker_containers.png)
+
+### AWS EC2 Live Deployment
+
+![AWS EC2 Deployment](reports/screenshots/aws_ec2_deployment.png)
 
 ---
 
@@ -594,70 +555,6 @@ Ignored model files:
 models/*.pkl
 models/*.joblib
 !models/.gitkeep
-```
-
----
-
-## Screenshots
-
-Add screenshots in the `reports/screenshots/` folder.
-
-Suggested screenshots:
-
-```text
-1. Streamlit dashboard overview
-2. Credit risk prediction result
-3. Fraud detection result
-4. Customer segmentation result
-5. Batch prediction uploaded data preview
-6. Batch prediction final result table
-7. FastAPI Swagger documentation
-8. Docker containers running
-9. AWS EC2 live deployment
-```
-
-Example Markdown:
-
-```markdown
----
-
-## Project Screenshots
-
-### Streamlit Dashboard
-
-![Dashboard](reports/screenshots/dashboard.png)
-
-### Credit Risk Prediction
-
-![Credit Risk Prediction](reports/screenshots/credit_risk.png)
-
-### Fraud Detection
-
-![Fraud Detection](reports/screenshots/fraud_detection.png)
-
-### Customer Segmentation
-
-![Customer Segmentation](reports/screenshots/customer_segmentation.png)
-
-### Batch Prediction - Uploaded Data Preview
-
-![Batch Prediction Preview](reports/screenshots/batch_prediction_preview.png)
-
-### Batch Prediction - Final Results
-
-![Batch Prediction Results](reports/screenshots/batch_prediction_results.png)
-
-### FastAPI Swagger Documentation
-
-![FastAPI Docs](reports/screenshots/fastapi_docs.png)
-
-### Docker Containers Running
-
-![Docker Containers](reports/screenshots/docker_containers.png)
-
-### AWS EC2 Live Deployment
-
-![AWS EC2 Deployment](reports/screenshots/aws_ec2_deployment.png)
 ```
 
 ---
