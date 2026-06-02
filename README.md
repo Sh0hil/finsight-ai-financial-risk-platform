@@ -1,6 +1,6 @@
 # FinSight AI: End-to-End Financial Risk Intelligence Platform
 
-FinSight AI is a modular, Dockerized financial risk intelligence platform that predicts **credit default risk**, detects **fraudulent transactions**, performs **customer segmentation**, supports **batch CSV prediction**, and provides business recommendations through a **FastAPI backend** and **Streamlit dashboard**.
+FinSight AI is a modular, Dockerized financial risk intelligence platform that predicts **credit default risk**, detects **fraudulent transactions**, performs **customer segmentation**, supports **batch CSV prediction**, and provides **business recommendations** through a **FastAPI backend** and **Streamlit dashboard**.
 
 ---
 
@@ -12,21 +12,29 @@ http://13.232.121.242:8501
 **FastAPI Swagger Docs:**  
 http://13.232.121.242:8000/docs
 
-> Note: The live links work only when the AWS EC2 instance is running. If the instance is stopped/restarted without an Elastic IP, the public IP may change.
+> Note: The live links work only when the AWS EC2 instance is running. If the instance is stopped or restarted without an Elastic IP, the public IP may change.
 
 ---
 
 ## Project Overview
 
-Financial institutions process large volumes of loan applications, customer profiles, and transactions. Manual risk assessment is slow, difficult to scale, and inconsistent. FinSight AI uses machine learning to automate financial risk analysis and provide actionable business decisions.
+Financial institutions process large volumes of loan applications, customer profiles, and transaction data every day. Manual risk assessment is slow, inconsistent, and difficult to scale.
 
-The project contains three main modules:
+FinSight AI solves this problem by using machine learning to automate financial risk analysis and convert predictions into actionable business recommendations.
 
-1. **Credit Risk Prediction** - predicts whether a loan applicant may default.
-2. **Fraud Detection** - detects potentially fraudulent transactions.
-3. **Customer Segmentation** - groups customers based on transaction behavior.
+The project contains four major functional areas:
 
-The system supports both **single-record prediction** and **batch prediction using CSV upload**.
+1. **Credit Risk Prediction**  
+   Predicts whether a loan applicant may default.
+
+2. **Fraud Detection**  
+   Detects potentially fraudulent transactions.
+
+3. **Customer Segmentation**  
+   Groups customers based on transaction behavior.
+
+4. **Batch Prediction**  
+   Allows users to upload CSV files and generate predictions for multiple records together.
 
 ---
 
@@ -35,13 +43,13 @@ The system supports both **single-record prediction** and **batch prediction usi
 - Credit default risk prediction
 - Fraud transaction detection
 - Customer segmentation
-- Business recommendation engine
 - Batch CSV upload and prediction
 - Downloadable prediction results
-- FastAPI backend with Swagger documentation
+- FastAPI batch prediction endpoints
 - Streamlit interactive dashboard
-- Dockerized multi-container setup
-- AWS EC2 deployment
+- Business recommendation engine
+- Dockerized multi-container deployment
+- AWS EC2 cloud deployment
 - Modular production-style code structure
 
 ---
@@ -59,6 +67,7 @@ The system supports both **single-record prediction** and **batch prediction usi
 | Deployment | Docker, Docker Compose |
 | Cloud | AWS EC2 |
 | Version Control | Git, GitHub |
+| Container Registry | Docker Hub |
 
 ---
 
@@ -67,9 +76,25 @@ The system supports both **single-record prediction** and **batch prediction usi
 ### 1. Credit Risk Module
 
 **Dataset:** Home Credit Default Risk Dataset  
-**Objective:** Predict whether a loan applicant may default.
+**Objective:** Predict whether a loan applicant is likely to default.
 
-Important features include contract type, gender, car ownership, realty ownership, income amount, credit amount, annuity amount, education type, family status, housing type, occupation type, employment days, and family members.
+Important features include:
+
+- Contract type
+- Gender
+- Car ownership
+- Realty ownership
+- Income amount
+- Credit amount
+- Annuity amount
+- Goods price
+- Income type
+- Education type
+- Family status
+- Housing type
+- Occupation type
+- Employment days
+- Family members
 
 Engineered features:
 
@@ -80,12 +105,22 @@ CREDIT_TERM
 DAYS_EMPLOYED_RATIO
 ```
 
+---
+
 ### 2. Fraud Detection Module
 
 **Dataset:** PaySim Fraud Detection Dataset  
 **Objective:** Detect fraudulent financial transactions.
 
-Important features include transaction type, amount, old origin balance, new origin balance, old destination balance, and new destination balance.
+Important features include:
+
+- Transaction step
+- Transaction type
+- Transaction amount
+- Old origin balance
+- New origin balance
+- Old destination balance
+- New destination balance
 
 Engineered features:
 
@@ -96,11 +131,22 @@ amount_balance_ratio
 is_balance_drained
 ```
 
+---
+
 ### 3. Customer Segmentation Module
 
 **Objective:** Segment customers based on transaction behavior.
 
-Features include total transactions, total amount, average amount, fraud ratio, balance behavior, and transaction type counts.
+Features include:
+
+- Total transactions
+- Total transaction amount
+- Average transaction amount
+- Maximum transaction amount
+- Minimum transaction amount
+- Fraud ratio
+- Balance behavior
+- Transaction type counts
 
 ---
 
@@ -127,6 +173,150 @@ Docker Deployment
    ↓
 AWS EC2 Hosting
 ```
+
+---
+
+## Batch Prediction Module
+
+The batch prediction module is one of the most practical parts of this project. Instead of entering one record at a time, users can upload a CSV file and generate predictions for multiple records together.
+
+### Batch Prediction Workflow
+
+```text
+Select Batch Prediction Module
+   ↓
+Choose Prediction Type
+   ↓
+Upload CSV File
+   ↓
+Preview Uploaded Data
+   ↓
+Select Number of Rows to Predict
+   ↓
+Run Batch Prediction
+   ↓
+View Prediction Results
+   ↓
+Download Final Prediction CSV
+```
+
+### Batch Prediction Features
+
+- CSV file upload from Streamlit dashboard
+- Uploaded data preview before prediction
+- User-controlled row limit for faster testing
+- FastAPI batch endpoint integration
+- Multiple records predicted together
+- Prediction results shown in tabular format
+- Downloadable output CSV
+- Supports credit risk batch prediction
+- Supports fraud detection batch prediction
+
+### Batch Prediction Architecture
+
+```text
+Streamlit CSV Upload
+        ↓
+FastAPI Batch Endpoint
+        ↓
+Data Cleaning + Feature Engineering
+        ↓
+Saved ML Model
+        ↓
+Prediction + Probability
+        ↓
+Business Recommendation
+        ↓
+Results Returned to Dashboard
+        ↓
+Downloadable CSV
+```
+
+### Batch API Endpoints
+
+| Endpoint | Purpose |
+|---|---|
+| `/batch-predict-credit-risk` | Predicts credit risk for multiple applicants using uploaded CSV |
+| `/batch-predict-fraud` | Predicts fraud risk for multiple transactions using uploaded CSV |
+
+### Why Batch Prediction Is Important
+
+Batch prediction makes the project more realistic for financial companies because banks, NBFCs, fintech companies, and fraud monitoring teams usually process thousands of records together instead of one record at a time.
+
+This feature makes the project suitable for real business use cases such as:
+
+- Bulk loan application screening
+- Transaction fraud monitoring
+- Risk report generation
+- Internal financial analytics
+- Automated decision-support systems
+
+---
+
+## Streamlit Dashboard Modules
+
+The Streamlit dashboard contains the following modules:
+
+```text
+Project Overview
+Credit Risk Prediction
+Fraud Detection
+Customer Segmentation
+Batch Prediction
+```
+
+### 1. Project Overview
+
+Provides a high-level summary of the project, modules, and system purpose.
+
+### 2. Credit Risk Prediction
+
+Allows single applicant-level prediction using credit risk features.
+
+Output includes:
+
+- Prediction label
+- Default probability
+- Risk level
+- Decision
+- Recommendation
+
+### 3. Fraud Detection
+
+Allows single transaction-level fraud prediction.
+
+Output includes:
+
+- Prediction label
+- Fraud probability
+- Risk level
+- Decision
+- Recommended action
+
+### 4. Customer Segmentation
+
+Segments customers based on financial and transaction behavior.
+
+Output includes:
+
+- Segment ID
+- Segment name
+- PCA values
+- Business priority
+- Recommended segment action
+
+### 5. Batch Prediction
+
+Allows CSV upload for multiple-record prediction.
+
+Output includes:
+
+- Uploaded data preview
+- Processed prediction results
+- Risk probability
+- Decision
+- Recommendation
+- Downloadable CSV result
 
 ---
 
@@ -200,16 +390,49 @@ finsight-ai-financial-risk-platform/
 
 ---
 
+## Business Recommendation Engine
+
+The project does not only return raw model predictions. It also converts model outputs into business-friendly recommendations.
+
+### Credit Risk Decisions
+
+| Risk Level | Decision |
+|---|---|
+| Low Risk | Approve |
+| Medium Risk | Manual Review |
+| High Risk | Reject / Manual Review Required |
+
+### Fraud Detection Decisions
+
+| Risk Level | Decision |
+|---|---|
+| Low Risk | Allow Transaction |
+| Medium Risk | Step-up Authentication |
+| High Risk | Manual Verification |
+| Critical Risk | Block Transaction |
+
+### Customer Segmentation Actions
+
+The segmentation module recommends actions such as:
+
+- Offer premium products
+- Monitor suspicious customers
+- Send engagement campaigns
+- Trigger account safety review
+- Continue normal monitoring
+
+---
+
 ## Run Locally Without Docker
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Sh0hil/finsight-ai-financial-risk-platform.git
 cd finsight-ai-financial-risk-platform
 ```
 
-### 2. Create virtual environment
+### 2. Create Virtual Environment
 
 ```bash
 python -m venv venv
@@ -227,13 +450,13 @@ Activate it on Linux/Mac:
 source venv/bin/activate
 ```
 
-### 3. Install dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Run FastAPI backend
+### 4. Run FastAPI Backend
 
 ```bash
 python -m uvicorn app.main:app --reload
@@ -245,7 +468,7 @@ Open:
 http://127.0.0.1:8000/docs
 ```
 
-### 5. Run Streamlit dashboard
+### 5. Run Streamlit Dashboard
 
 Open another terminal:
 
@@ -375,57 +598,6 @@ models/*.joblib
 
 ---
 
-## Business Recommendations
-
-The project returns predictions as well as practical business decisions.
-
-### Credit Risk
-
-| Risk Level | Decision |
-|---|---|
-| Low Risk | Approve |
-| Medium Risk | Manual Review |
-| High Risk | Reject / Manual Review Required |
-
-### Fraud Detection
-
-| Risk Level | Decision |
-|---|---|
-| Low Risk | Allow Transaction |
-| Medium Risk | Step-up Authentication |
-| High Risk | Manual Verification |
-| Critical Risk | Block Transaction |
-
-### Customer Segmentation
-
-The system recommends actions such as premium offers, customer monitoring, engagement campaigns, and account safety reviews.
-
----
-
-## Batch Prediction
-
-The dashboard supports batch prediction using CSV upload.
-
-Workflow:
-
-```text
-Upload CSV
-   ↓
-Select prediction type
-   ↓
-Choose number of rows
-   ↓
-Run batch prediction
-   ↓
-View results
-   ↓
-Download prediction CSV
-```
-
-This makes the project practical for real financial operations where many records need to be processed at once.
-
----
-
 ## Screenshots
 
 Add screenshots in the `reports/screenshots/` folder.
@@ -437,18 +609,38 @@ Suggested screenshots:
 2. Credit risk prediction result
 3. Fraud detection result
 4. Customer segmentation result
-5. Batch prediction result
-6. FastAPI Swagger documentation
-7. Docker containers running
-8. AWS EC2 live deployment
+5. Batch prediction uploaded data preview
+6. Batch prediction final result table
+7. FastAPI Swagger documentation
+8. Docker containers running
+9. AWS EC2 live deployment
 ```
 
-Example:
+Example Markdown:
 
 ```markdown
 ![Dashboard](reports/screenshots/dashboard.png)
+![Batch Prediction](reports/screenshots/batch_prediction.png)
+![Batch Results](reports/screenshots/batch_prediction_results.png)
 ![FastAPI Docs](reports/screenshots/fastapi_docs.png)
 ```
+
+---
+
+## Results
+
+The platform successfully provides:
+
+- Credit default prediction
+- Fraud prediction
+- Customer segment prediction
+- Prediction probability
+- Risk level
+- Business decision
+- Recommended action
+- Batch CSV prediction
+- Downloadable prediction results
+- Cloud-hosted dashboard and API
 
 ---
 
