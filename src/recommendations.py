@@ -95,3 +95,20 @@ def get_segment_recommendation(segment_name):
             "segment_action": "Continue normal customer monitoring.",
             "business_priority": "Normal"
         }
+
+# --- THIS IS THE MISSING FUNCTION YOU NEEDED ---
+def get_final_risk_summary(default_probability, fraud_probability, segment_name):
+    """
+    Aggregates all risk module recommendations into a single comprehensive summary.
+    """
+    segment_data = get_segment_recommendation(segment_name)
+    
+    return {
+        "credit_risk": get_credit_recommendation(default_probability),
+        "fraud_risk": get_fraud_recommendation(fraud_probability),
+        "customer_segment": {
+            "segment_name": segment_name,
+            "segment_action": segment_data.get("segment_action"),
+            "business_priority": segment_data.get("business_priority")
+        }
+    }

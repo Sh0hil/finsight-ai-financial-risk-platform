@@ -221,12 +221,11 @@ elif page == "Credit Risk Prediction":
             CODE_GENDER = st.selectbox("Gender", ["M", "F"])
             FLAG_OWN_CAR = st.selectbox("Own Car", ["Y", "N"])
             FLAG_OWN_REALTY = st.selectbox("Own Realty", ["Y", "N"])
-            CNT_CHILDREN = st.number_input("Children Count", min_value=0, max_value=10, value=1)
-            AMT_INCOME_TOTAL = st.number_input("Income Total", min_value=1.0, value=157500.0)
-            AMT_CREDIT = st.number_input("Credit Amount", min_value=1.0, value=770292.0)
-            AMT_ANNUITY = st.number_input("Annuity Amount", min_value=1.0, value=30676.5)
-            AMT_GOODS_PRICE = st.number_input("Goods Price", min_value=1.0, value=688500.0)
-            NAME_INCOME_TYPE = st.selectbox("Income Type", ["Working", "Commercial associate", "Pensioner", "State servant"])
+            AMT_INCOME_TOTAL = st.number_input("Income Total", min_value=1.0, value=500000.0)
+            AMT_CREDIT = st.number_input("Credit Amount", min_value=1.0, value=100000.0)
+            AMT_ANNUITY = st.number_input("Annuity Amount", min_value=1.0, value=10000.0)
+            AMT_GOODS_PRICE = st.number_input("Goods Price", min_value=1.0, value=180000.0)
+
 
         with col2:
             NAME_EDUCATION_TYPE = st.selectbox(
@@ -241,13 +240,15 @@ elif page == "Credit Risk Prediction":
                 "Housing Type",
                 ["House / apartment", "Rented apartment", "With parents", "Municipal apartment"]
             )
-            DAYS_BIRTH = st.number_input("Days Birth", value=-13506)
-            DAYS_EMPLOYED = st.number_input("Days Employed", value=-105)
+            DAYS_BIRTH = st.number_input("Days Birth", value=-15000)
+            DAYS_EMPLOYED = st.number_input("Days Employed", value=-3000)
+            NAME_INCOME_TYPE = st.selectbox("Income Type", ["Working", "Commercial associate", "Pensioner", "State servant"])    
             OCCUPATION_TYPE = st.selectbox(
                 "Occupation Type",
                 ["Laborers", "Core staff", "Managers", "Sales staff", "Drivers", "Accountants", "Unknown"]
             )
-            CNT_FAM_MEMBERS = st.number_input("Family Members", min_value=1.0, value=3.0)
+            CNT_CHILDREN = st.number_input("Children Count", min_value=0, max_value=10, value=1)
+            CNT_FAM_MEMBERS = st.number_input("Family Members", min_value=1.0, value=2.0)
 
         submitted = st.form_submit_button("Predict Credit Risk")
 
@@ -334,24 +335,24 @@ elif page == "Customer Segmentation":
         col1, col2 = st.columns(2)
 
         with col1:
-            total_transactions = st.number_input("Total Transactions", min_value=0, value=5)
-            total_amount = st.number_input("Total Amount", min_value=0.0, value=250000.0)
-            avg_amount = st.number_input("Average Amount", min_value=0.0, value=50000.0)
-            max_amount = st.number_input("Max Amount", min_value=0.0, value=120000.0)
-            min_amount = st.number_input("Min Amount", min_value=0.0, value=10000.0)
-            total_fraud_transactions = st.number_input("Total Fraud Transactions", min_value=0, value=1)
-            fraud_ratio = st.number_input("Fraud Ratio", min_value=0.0, max_value=1.0, value=0.2)
+            total_transactions = st.number_input("Total Transactions", min_value=0, value=2)
+            total_amount = st.number_input("Total Amount", min_value=0.0, value=15000.0)
+            avg_amount = st.number_input("Average Amount", min_value=0.0, value=7500.0)
+            max_amount = st.number_input("Max Amount", min_value=0.0, value=10000.0)
+            min_amount = st.number_input("Min Amount", min_value=0.0, value=5000.0)
+            avg_old_balance = st.number_input("Average Old Balance", min_value=0.0, value=50000.0)
+            avg_new_balance = st.number_input("Average New Balance", min_value=0.0, value=55000.0)
+            #total_fraud_transactions = st.number_input("Total Fraud Transactions", min_value=0, value=1)
+            #fraud_ratio = st.number_input("Fraud Ratio", min_value=0.0, max_value=1.0, value=0.2)
 
         with col2:
-            avg_old_balance = st.number_input("Average Old Balance", min_value=0.0, value=100000.0)
-            avg_new_balance = st.number_input("Average New Balance", min_value=0.0, value=50000.0)
-            max_old_balance = st.number_input("Max Old Balance", min_value=0.0, value=200000.0)
-            max_new_balance = st.number_input("Max New Balance", min_value=0.0, value=100000.0)
-            CASH_IN = st.number_input("CASH_IN Count", min_value=0, value=0)
-            CASH_OUT = st.number_input("CASH_OUT Count", min_value=0, value=2)
-            DEBIT = st.number_input("DEBIT Count", min_value=0, value=0)
-            PAYMENT = st.number_input("PAYMENT Count", min_value=0, value=1)
-            TRANSFER = st.number_input("TRANSFER Count", min_value=0, value=2)
+            max_old_balance = st.number_input("Max Old Balance", min_value=0.0, value=50000.0)
+            max_new_balance = st.number_input("Max New Balance", min_value=0.0, value=55000.0)
+            CASH_IN = st.number_input("CASH_IN Count", min_value=0, value=1)
+            CASH_OUT = st.number_input("CASH_OUT Count", min_value=0, value=0)
+            DEBIT = st.number_input("DEBIT Count", min_value=0, value=1)
+            PAYMENT = st.number_input("PAYMENT Count", min_value=0, value=0)
+            TRANSFER = st.number_input("TRANSFER Count", min_value=0, value=0)
 
         submitted = st.form_submit_button("Predict Segment")
 
@@ -362,8 +363,8 @@ elif page == "Customer Segmentation":
             "avg_amount": avg_amount,
             "max_amount": max_amount,
             "min_amount": min_amount,
-            "total_fraud_transactions": total_fraud_transactions,
-            "fraud_ratio": fraud_ratio,
+            #"total_fraud_transactions": total_fraud_transactions,
+            #"fraud_ratio": fraud_ratio,
             "avg_old_balance": avg_old_balance,
             "avg_new_balance": avg_new_balance,
             "max_old_balance": max_old_balance,

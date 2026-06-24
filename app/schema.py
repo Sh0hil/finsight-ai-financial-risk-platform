@@ -41,8 +41,8 @@ class SegmentInput(BaseModel):
     avg_amount: float
     max_amount: float
     min_amount: float
-    total_fraud_transactions: int
-    fraud_ratio: float
+    #total_fraud_transactions: int
+    #fraud_ratio: float
     avg_old_balance: float
     avg_new_balance: float
     max_old_balance: float
